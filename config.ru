@@ -13,8 +13,8 @@ end_time = three_months_from_now.beginning_of_month.to_i
 host = "touchstoneclimbing.com"
 path = "/gwpower-co/calendar/jsonfeed?format=raw&gcid=20&start=#{start_time}&end=#{end_time}&_=1406859918932"
 
-# response = Net::HTTP.get_response(host, path)
-# json = JSON.parse(response.body)
+response = Net::HTTP.get_response(host, path)
+json = JSON.parse(response.body)
 # 
 # cal = Icalendar::Calendar.new
 # 
