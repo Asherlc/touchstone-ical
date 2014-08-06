@@ -35,4 +35,4 @@ json = JSON.parse(response.body)
 # }
 
 status = 200
-run lambda { |env| [200, {}, [message]] }
+run lambda { |env| [200, {}, ["foo"]] }
