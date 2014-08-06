@@ -35,4 +35,4 @@ headers = {
 }
 
 status = 200
-run lambda { |env| [200, headers, [cal.to_ical]] }
+run lambda { |env| [200, headers, ["foo"]] }
