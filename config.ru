@@ -1,7 +1,11 @@
+puts "hello!"
+
 require 'active_support/all'
 require 'icalendar'
 require 'json'
 require 'nokogiri'
+
+puts "init"
 
 three_months_ago = 3.months.ago
 three_months_from_now = 3.months.from_now
