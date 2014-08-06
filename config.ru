@@ -3,8 +3,6 @@ require 'icalendar'
 require 'json'
 require 'nokogiri'
 
-# http://www.touchstoneclimbing.com/gwpower-co/calendar/jsonfeed?format=raw&gcid=20&start=1404000000&end=1407628800&_=1406859918932
-
 three_months_ago = 3.months.ago
 three_months_from_now = 3.months.from_now
 
@@ -36,4 +34,6 @@ headers = {
 }
 
 status = 200
+puts cal.to_ical
+puts "fancy"
 run lambda { |env| [200, headers, [cal.to_ical]] }
