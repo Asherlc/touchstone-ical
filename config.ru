@@ -17,7 +17,7 @@ begin
   response = Net::HTTP.get_response(host, path)
   json = JSON.parse(response.body)
 rescue => e
-  puts e.inspect
+  message = e.inspect
 end
 # 
 # cal = Icalendar::Calendar.new
@@ -39,4 +39,4 @@ end
 # }
 
 status = 200
-run lambda { |env| [200, {}, ["foo"]] }
+run lambda { |env| [200, {}, [message]] }
