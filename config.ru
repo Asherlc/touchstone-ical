@@ -11,7 +11,7 @@ start_time = three_months_ago.beginning_of_month.to_i
 end_time = three_months_from_now.beginning_of_month.to_i
 
 host = "touchstoneclimbing.com"
-path = "/gwpower-co/calendar/events?format=raw&ids=gc-20&date-start=#{start_time}&date-end=#{end_time}&_=1406859918932"
+path = "/gwpower-co/calendar/events?format=raw&ids=gc-20&date-start=#{start_time}&date-end=#{end_time}&_=1406859918932&limit=0"
 
 puts host + path
 
