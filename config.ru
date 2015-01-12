@@ -20,16 +20,17 @@ class TouchstoneCal
   end
 
   def path
-    three_months_ago = 3.months.ago
-    three_months_from_now = 3.months.from_now
+    one_month_ago = 1.months.ago
+    one_month_from_now = 1.months.from_now
     
-    start_time = three_months_ago.beginning_of_month.to_i
-    end_time = three_months_from_now.beginning_of_month.to_i
+    start_time = one_month_ago.beginning_of_month.to_i
+    end_time = one_month_from_now.beginning_of_month.to_i
     
     "/#{gym_name}/calendar/events?format=raw&ids=gc-20&date-start=#{start_time}&date-end=#{end_time}&_=1406859918932&limit=0"
   end
 
   def response_json
+    puts HOST, path
     response = Net::HTTP.get_response(HOST, path)
     JSON.parse(response.body)
   end
