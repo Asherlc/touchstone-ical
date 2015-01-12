@@ -47,13 +47,10 @@ class TouchstoneCal
   end
 
   def path
-    one_month_ago = 1.months.ago
-    one_month_from_now = 1.months.from_now
+    beginning_of_month = Date.today.beginning_of_month
+    end_of_month = Date.today.end_of_month
     
-    start_time = one_month_ago.beginning_of_month.to_i
-    end_time = one_month_from_now.beginning_of_month.to_i
-    
-    "/#{gym_name}/calendar/events?format=raw&ids=#{calendar_codes}&date-start=#{start_time}&date-end=#{end_time}&_=1406859918932&limit=0"
+    "/#{gym_name}/calendar/events?format=raw&ids=#{calendar_codes}&date-start=#{beginning_of_month.to_time.to_i}&date-end=#{end_of_month.to_time.to_i}&_=1406859918932&limit=0"
   end
 
   def response_json
