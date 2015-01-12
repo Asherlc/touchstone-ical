@@ -3,6 +3,9 @@ require 'icalendar'
 require 'json'
 require 'nokogiri'
 
+class TouchstoneServerError < StandardError
+end
+
 class TouchstoneCal
   HOST = "touchstoneclimbing.com"
 
@@ -56,6 +59,11 @@ class TouchstoneCal
   def response_json
     puts HOST, path
     response = Net::HTTP.get_response(HOST, path)
+
+    if response.body.include?("Error displaying the error page: Application Instantiation Error")
+      raise TouchstoneServerError, response.body
+    end
+
     JSON.parse(response.body)
   end
 
