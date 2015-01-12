@@ -38,8 +38,12 @@ class TouchstoneCal
     end
   end
 
-  def calendar_code
-    CLASS_CODES[gym_name][@class_type]
+  def calendar_codes
+    if @class_type == "all"
+      CLASS_CODES[gym_name].values.collect{ |code| "gc-#{code}" }.join("%2C")
+    else
+      "gc-#{CLASS_CODES[gym_name][@class_type]}"
+    end
   end
 
   def path
@@ -49,7 +53,7 @@ class TouchstoneCal
     start_time = one_month_ago.beginning_of_month.to_i
     end_time = one_month_from_now.beginning_of_month.to_i
     
-    "/#{gym_name}/calendar/events?format=raw&ids=gc-#{calendar_code}&date-start=#{start_time}&date-end=#{end_time}&_=1406859918932&limit=0"
+    "/#{gym_name}/calendar/events?format=raw&ids=#{calendar_codes}&date-start=#{start_time}&date-end=#{end_time}&_=1406859918932&limit=0"
   end
 
   def response_json
