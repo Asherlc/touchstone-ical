@@ -60,7 +60,7 @@ class TouchstoneCal
   def response_json
     uri = URI.parse("http://#{HOST}#{path}")
     http = Net::HTTP.new(uri.host, uri.port)
-    http.read_timeout = 9
+    http.read_timeout = 25
 
     response = http.request(Net::HTTP::Get.new(uri.request_uri))
     
