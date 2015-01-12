@@ -1,5 +1,6 @@
 require 'active_support/all'
 require 'icalendar'
+require 'open-uri'
 require 'json'
 require 'nokogiri'
 
@@ -57,9 +58,12 @@ class TouchstoneCal
   end
 
   def response_json
-    puts HOST, path
-    response = Net::HTTP.get_response(HOST, path)
+    uri = URI.parse("http://#{HOST}#{path}")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.read_timeout = 9
 
+    response = http.request(Net::HTTP::Get.new(uri.request_uri))
+    
     if response.body.include?("Error displaying the error page: Application Instantiation Error")
       raise TouchstoneServerError, response.body
     end
