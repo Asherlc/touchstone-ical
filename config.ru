@@ -44,7 +44,7 @@ class TouchstoneCal
         e.dtend = DateTime.parse(event["end"])
         e.summary = Nokogiri::HTML(event["title"].gsub('<br />',"\n")).text
         e.description = Nokogiri::HTML(description).text
-        e.url = "http://#{HOSt}#{event["url"]}"
+        e.url = "http://#{HOST}#{event["url"]}"
       end
     end
   
