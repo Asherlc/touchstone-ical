@@ -61,3 +61,5 @@ class TouchstoneCalApp
     TouchstoneCal.new(env).response
   end
 end
+
+run TouchstoneCalApp
