@@ -52,7 +52,7 @@ class TouchstoneCal
   end
 
   def response
-    [200, {}, calendar.to_ical]
+    [200, {}, [calendar.to_ical]]
   end
 end
     
